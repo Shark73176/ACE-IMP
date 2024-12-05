@@ -14,7 +14,7 @@ Material.curve		= 1 --Slight and almost unnoticable penalty to high thickness ar
 --All Resiliance values are damage multipliers. Higher = more damage. Lower = less damage.
 
 Material.effectiveness  = 1
-Material.resiliance	= 1
+Material.resiliance	= 0.95
 
 Material.spallresist	= 1.12
 

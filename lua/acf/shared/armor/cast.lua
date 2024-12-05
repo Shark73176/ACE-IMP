@@ -14,11 +14,11 @@ Material.curve		= 1
 --All Resiliance values are damage multipliers. Higher = more damage. Lower = less damage.
 
 Material.effectiveness  = 0.98
-Material.resiliance	= 0.0225
+Material.resiliance	= 0.02
 
 Material.spallresist	= 0.5
 
-Material.spallmult	= 2
+Material.spallmult	= 1.8
 Material.ArmorMul	= 1
 Material.NormMult	= 0.8
 

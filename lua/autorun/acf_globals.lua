@@ -8,7 +8,7 @@ ACF.CurrentVersion = 0	-- just defining a variable, do not change
 
 ACF.Year = 2024			-- Current Year
 
-print("[ACE | INFO]- loading ACE. . .")
+print("aboba")
 
 ACE               = ACE or {}
 ACE.ArmorTypes    = {}
@@ -33,7 +33,7 @@ ACF.MeshCalcEnabled       = false
 
 ACF.SpreadScale           = 16						-- The maximum amount that damage can decrease a gun's accuracy.  Default 4x
 ACF.GunInaccuracyScale    = 1						-- A multiplier for gun accuracy.
-ACF.GunInaccuracyBias     = 2						-- Higher numbers make shots more likely to be inaccurate.  Choose between 0.5 to 4. Default is 2 (unbiased).
+ACF.GunInaccuracyBias     = 0.5						-- Higher numbers make shots more likely to be inaccurate.  Choose between 0.5 to 4. Default is 2 (unbiased).
 
 ---------------------------------- Debris ----------------------------------
 
@@ -55,7 +55,7 @@ ACF.TankVolumeMul       = 1						-- multiplier for fuel tank capacity, 1.0 is ap
 
 ---------------------------------- Ammo Crate config ----------------------------------
 
-ACF.CrateMaximumSize    = 250
+ACF.CrateMaximumSize    = 300
 ACF.CrateMinimumSize    = 1
 
 ACF.RefillDistance      = 400					-- Distance in which ammo crate starts refilling.
@@ -67,10 +67,15 @@ ACF.HEDamageFactor    = 50
 ACF.BoomMult          = 8					-- How much more do ammocrates/fueltanks blow up, useful since crates detonate all at once now.
 
 ACF.HEPower           = 8000					-- HE Filler power per KG in KJ
+ACF.URANPower         = 95000              -- Uran Filler power per KG in KJ
 ACF.HEDensity         = 1.65					-- HE Filler density (That's TNT density)
+ACF.URANDensity       = 1.27					-- HE Filler density (That's TNT density)
 ACF.HEFrag            = 1500					-- Mean fragment number for equal weight TNT and casing
-ACF.HEBlastPen        = 0.4					-- Blast penetration exponent based of HE power
-ACF.HEFeatherExp      = 0.5					-- exponent applied to HE dist/maxdist feathering, <1 will increasingly bias toward max damage until sharp falloff at outer edge of range
+ACF.URANFrag          = 15500					-- Mean fragment number for equal weight TNT and casing
+ACF.HEBlastPen        = 0.4					    -- Blast penetration exponent based of HE power
+ACF.URANBlastPen      = 45			        -- Blast penetration exponent based of HE power
+ACF.HEFeatherExp      = 0.5					    -- exponent applied to HE dist/maxdist feathering, <1 will increasingly bias toward max damage until sharp falloff at outer edge of range
+ACF.URANFeatherExp    = 20					    -- exponent applied to HE dist/maxdist feathering, <1 will increasingly bias toward max damage until sharp falloff at outer edge of range
 ACF.HEATMVScale       = 0.75					-- Filler KE to HEAT slug KE conversion expotential
 ACF.HEATMVScaleTan    = 0.75					-- Filler KE to HEAT slug KE conversion expotential
 ACF.HEATMulAmmo       = 30						-- HEAT slug damage multiplier; 13.2x roughly equal to AP damage
@@ -127,7 +132,8 @@ ACF.FLDamageMult        = 1.4					-- FL Damage Multipler
 ACF.HEATDamageMult      = 2						-- HEAT Damage Multipler
 ACF.HEDamageMult        = 2						-- HE Damage Multipler
 ACF.HESHDamageMult      = 1.2					-- HESH Damage Multipler
-ACF.HPDamageMult        = 8						-- HP Damage Multipler
+ACF.HPDamageMult        = 8
+ACF.URANDamageMult        = 2						-- HP Damage Multipler
 
 ACF.AllowCSLua          = 0
 

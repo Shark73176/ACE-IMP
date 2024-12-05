@@ -179,6 +179,7 @@ function PANEL:Init( )
 	local Ammo = HomeNode:AddNode( "Ammo" , "icons/ammo.png" ) --Ammo folder
 
 	AmmoBuildList( Ammo, "Armor Piercing Rounds", list.Get("APRoundTypes") ) -- AP Content
+	AmmoBuildList( Ammo, "Armour Piercing Fin Stabilized Discarding Sabot", list.Get("APFSDSRoundTypes") ) -- APFSDS Content
 	AmmoBuildList( Ammo, "High Explosive Rounds", list.Get("HERoundTypes") )	-- HE/HEAT Content
 	AmmoBuildList( Ammo, "Special Purpose Rounds", list.Get("SPECSRoundTypes") ) -- Special Content
 

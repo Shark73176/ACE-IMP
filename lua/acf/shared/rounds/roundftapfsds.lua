@@ -1,17 +1,17 @@
 
 AddCSLuaFile()
 
-ACF.AmmoBlacklist.APFSDS = { "AC", "SA","C","MG", "HMG" ,"RAC", "SC","ATR" , "MO" , "RM", "SL", "GL", "HW", "SC", "BOMB" , "GBU", "ASM", "AAM", "SAM", "UAR", "POD", "FFAR", "ATGM", "ARTY", "ECM", "FGL"}
+ACF.AmmoBlacklist.FTAPFSDS = { "AC", "SA","C","MG", "HMG" ,"RAC", "SC","ATR" , "MO" , "RM", "SL", "GL", "HW", "SC", "BOMB" , "GBU", "ASM", "AAM", "SAM", "UAR", "POD", "FFAR", "ATGM", "ARTY", "ECM", "FGL"}
 
 local Round = {}
 
 Round.type  = "Ammo" --Tells the spawn menu what entity to spawn
-Round.name  = "[APFSDS] - " .. ACFTranslation.ShellAPFSDS[1] --Human readable name
+Round.name  = "[FTAPFSDS] - " .. ACFTranslation.ShellFTAPFSDS[1] --Human readable name
 Round.model = "models/munitions/dart_100mm.mdl" --Shell flight model
-Round.desc  = ACFTranslation.ShellAPFSDS[2]
-Round.netid = 16 --Unique ammotype ID for network transmission
+Round.desc  = ACFTranslation.ShellFTAPFSDS[2]
+Round.netid = 100 --Unique ammotype ID for network transmission
 
-Round.Type  = "APFSDS"
+Round.Type  = "FTAPFSDS"
 
 function Round.create( _, BulletData )
 	ACF_CreateBullet( BulletData )
@@ -36,11 +36,11 @@ function Round.convert( _, PlayerData )
 
 	Data.MinCalMult		= 0.2
 	Data.MaxCalMult		= 1.0
-	Data.PenModifier		= 0.85 --for 120mm. 726 @ 1.1. 630 @1.3
+	Data.PenModifier		= 0.7425--for 120mm. 726 @ 1.1. 630 @1.3
 	Data.VelModifier		= 1.05
 	Data.Ricochet		= 80
 
-	--Used for adapting acf2 apds/apfsds to the new format
+	--Used for adapting acf2 apds/FTAPFSDS to the new format
 	PlayerData.Data5 = math.Clamp(PlayerData.Data5,Data.MinCalMult,Data.MaxCalMult)
 
 	Data.SCalMult	= PlayerData.Data5
@@ -83,7 +83,7 @@ end
 
 function Round.network( Crate, BulletData )
 
-	Crate:SetNWString( "AmmoType", "APFSDS" )
+	Crate:SetNWString( "AmmoType", "FTAPFSDS" )
 	Crate:SetNWString( "AmmoID", BulletData.Id )
 	Crate:SetNWFloat( "Caliber", BulletData.Caliber )
 	Crate:SetNWFloat( "ProjMass", BulletData.ProjMass )
@@ -201,7 +201,7 @@ end
 
 function Round.guicreate( Panel, Table )
 
-	acfmenupanel:AmmoSelect( ACF.AmmoBlacklist.APFSDS )
+	acfmenupanel:AmmoSelect( ACF.AmmoBlacklist.FTAPFSDS )
 
 	ACE_UpperCommonDataDisplay()
 
@@ -223,7 +223,7 @@ function Round.guiupdate( Panel )
 
 	local PlayerData = {}
 		PlayerData.Id = acfmenupanel.AmmoData.Data.id		--AmmoSelect GUI
-		PlayerData.Type = "APFSDS"									--Hardcoded, match as Round.Type instead
+		PlayerData.Type = "FTAPFSDS"									--Hardcoded, match as Round.Type instead
 		PlayerData.PropLength = acfmenupanel.AmmoData.PropLength	--PropLength slider
 		PlayerData.ProjLength = acfmenupanel.AmmoData.ProjLength	--ProjLength slider
 		PlayerData.Data5 = acfmenupanel.AmmoData.SCalMult
@@ -249,6 +249,6 @@ function Round.guiupdate( Panel )
 
 end
 
-list.Set( "APFSDSRoundTypes", "APFSDS", Round )
+list.Set( "APFSDSRoundTypes", "FTAPFSDS", Round )
 ACF.RoundTypes[Round.Type] = Round     --Set the round properties
 ACF.IdRounds[Round.netid] = Round.Type --Index must equal the ID entry in the table above, Data must equal the index of the table above

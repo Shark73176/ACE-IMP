@@ -4,7 +4,7 @@ local Material		= {}
 Material.id			= "Wood"
 Material.name		= "Wodd"
 Material.sname		= "Wood"
-Material.desc		= "Simple, generic, but trusty steel. The standard armor everything else is compared to."
+Material.desc		= "The best material for make a house but not a tank."
 Material.year		= 1900 -- Dont blame about this, ik that RHA has existed before this year but it would be cool to see: when?
 
 Material.massMod		= 0.09
@@ -13,15 +13,15 @@ Material.curve		= 1 --Slight and almost unnoticable penalty to high thickness ar
 --All effectiveness values multiply the Line of Sight armor values of armor.
 --All Resiliance values are damage multipliers. Higher = more damage. Lower = less damage.
 
-Material.effectiveness  = 0.18
-Material.resiliance	= 40
+Material.effectiveness  = 0.05
+Material.resiliance	= 50
 
 Material.spallarmor	= 0.1
-Material.spallresist	= 1
+Material.spallresist	= 5
 
-Material.spallmult	= 0.05
+Material.spallmult	= 0.2
 Material.ArmorMul	= 1
-Material.NormMult	= 0.8
+Material.NormMult	= 1
 
 if SERVER then
 	function Material.ArmorResolution( Entity, armor, losArmor, losArmorHealth, maxPenetration, FrArea, caliber, damageMult, _)
@@ -33,9 +33,13 @@ if SERVER then
 		local resiliance	= Material.resiliance
 
 		local ductilityvalue = (Entity.ACF.Ductility or 0) * 1.25 --The ductility value of the armor. Outputs 1 to -1 depending on max ductility
-		local ductilitymult    = 2 / (2 + ductilityvalue * 1.5) -- Direct damage multiplier based on ductility.
+		local ductilitymult    = 4 / (4 + ductilityvalue * 1.5) -- Direct damage multiplier based on ductility.
 
+        if Type == 'HE' or Type == 'HESH' or Type == 'NUCHE' then
+            slopeDmg = slopeDmg * 10 
+        end
 
+        local dmul = slopeDmg   
 
 		--(Entity.ACF.Ductility or 0)*2.5
 
