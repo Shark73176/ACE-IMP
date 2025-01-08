@@ -763,12 +763,12 @@ function ContactGUICreate()
 	end
 	acfmenupanel.CustomDisplay:AddItem( Wiki )
 
-	local Guide = vgui.Create("DButton")
-	Guide:SetText( "ACE guidelines" )
-	Guide:SetPos(0,0)
-	Guide:SetSize(250,30)
-	Guide.DoClick = function()
-	gui.OpenURL("https://docs.google.com/document/d/1yaHq4Lfjad4KKa0Jg9s-5lCpPVjV7FE4HXoGaKpi4Fs/edit")
+	local Youtube = vgui.Create("DButton")
+	Youtube:SetText( "MGE" )
+	Youtube:SetPos(0,0)
+	Youtube:SetSize(250,30)
+	Youtube.DoClick = function()
+	gui.OpenURL("https://www.youtube.com/watch?v=GIhhvTc7aV0&ab_channel=KrumSx")
 	end
 	acfmenupanel.CustomDisplay:AddItem( Guide )
 
